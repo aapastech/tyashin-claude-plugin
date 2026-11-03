@@ -26,5 +26,6 @@
       ]
     }
   },
-  "repository": "https://github.com/aapastech/tyashin-claude-plugin"
+  "repository": "https://github.com/aapastech/tyashin-claude-plugin",
+  "icon": ".claude-plugin/icon.png"
 }
