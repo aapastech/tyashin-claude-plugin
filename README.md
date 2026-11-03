@@ -58,7 +58,7 @@ You ⇄ Claude ── tyashin_* tools (runs on your computer) ── Tyashin pub
 
 - **Spend money.** No paid plans, top-ups, subscriptions or AI-image generation. The access token it gets is refused by Tyashin's billing, team and domain routes.
 - **Invent facts** about your business.
-- **Install extras on your site** (chatbot, pop-ups, third-party trackers). Tyashin's own privacy-first analytics is switched on when the site is published, and contact-form leads go to your dashboard.
+- **Install extras on your site** (chatbot, pop-ups, third-party trackers). Contact-form enquiries go to the Leads inbox in your Tyashin dashboard; analytics and other features are yours to switch on there.
 - **Use stock photos.** Image slots are briefs for your own photos.
 
 ## Your account and your data
