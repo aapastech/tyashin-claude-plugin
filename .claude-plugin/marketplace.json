@@ -1,0 +1,15 @@
+{
+  "name": "tyashin",
+  "description": "Official Tyashin plugins for Claude.",
+  "owner": { "name": "Tyashin", "url": "https://tyashin.com" },
+  "plugins": [
+    {
+      "name": "tyashin-website",
+      "source": "./plugins/tyashin-website",
+      "description": "Build and publish your business website on Tyashin's free plan, from a conversation with Claude.",
+      "version": "0.2.0",
+      "category": "productivity",
+      "tags": ["website", "small-business", "mcp", "skill"]
+    }
+  ]
+}

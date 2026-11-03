@@ -1,0 +1,158 @@
+{
+  "brand": {
+    "name": "Harbour & Pine Joinery",
+    "shortName": "Harbour & Pine",
+    "tagline": "Fitted joinery that looks like it was always there",
+    "description": "Made-to-measure wardrobes, shelving and kitchens in solid oak and tulipwood for older homes in Bristol and Bath.",
+    "voice": "calm, exact, quietly proud of the work"
+  },
+  "design": {
+    "thesis": "Quiet, warm precision — a workshop that smells of cedar, shown with the restraint of good furniture.",
+    "palette": {
+      "primary": "#2f4a3a",
+      "onPrimary": "#ffffff",
+      "accent": "#b88a4a",
+      "background": "#f8f5ef",
+      "foreground": "#1f2420",
+      "ink": "#18241d"
+    },
+    "headingFont": "cormorant-garamond",
+    "bodyFont": "manrope",
+    "radius": "sharp",
+    "motion": "subtle"
+  },
+  "pages": [
+    {
+      "path": "/",
+      "label": "Home",
+      "title": "Fitted joinery in Bristol & Bath | Harbour & Pine",
+      "description": "Made-to-measure wardrobes, alcove shelving and kitchens in solid oak and tulipwood, built in our workshop and fitted in Bristol and Bath homes.",
+      "inNav": false,
+      "sections": [
+        {
+          "type": "hero",
+          "variant": "editorial",
+          "eyebrow": "Bristol & Bath",
+          "headline": "Joinery that fits the house you have",
+          "sub": "Wardrobes, shelving and kitchens made to measure for awkward walls and older homes, built in our own workshop.",
+          "primaryCta": { "label": "Call the workshop", "href": "tel:+441174960123" },
+          "secondaryCta": { "label": "See our work", "href": "/services" },
+          "image": { "alt": "Painted alcove shelving beside a period fireplace", "brief": "A finished alcove unit in a period living room, soft daylight from the side, no people.", "aspect": "portrait" }
+        },
+        {
+          "type": "features",
+          "variant": "grid",
+          "eyebrow": "What we make",
+          "headline": "Three things, made properly",
+          "items": [
+            { "title": "Fitted wardrobes", "body": "Built to the wall you have, sloping ceilings and uneven floors included.", "icon": "Home", "href": "/services" },
+            { "title": "Alcove shelving", "body": "Shelving and cupboards that frame a fireplace instead of fighting it.", "icon": "Layers", "href": "/services" },
+            { "title": "Kitchen cabinetry", "body": "Solid oak or painted tulipwood cabinets, designed around how you cook.", "icon": "Hammer", "href": "/services" }
+          ],
+          "columns": 3
+        },
+        {
+          "type": "cta",
+          "headline": "Tell us about the wall",
+          "body": "Send a photo and rough measurements and we will tell you what is possible.",
+          "primaryCta": { "label": "Email the workshop", "href": "mailto:hello@harbourandpine.example" }
+        }
+      ]
+    },
+    {
+      "path": "/services",
+      "label": "Services",
+      "title": "Fitted wardrobes, shelving & kitchens | Harbour & Pine",
+      "description": "Made-to-measure fitted wardrobes, alcove shelving and kitchen cabinetry in solid oak and painted tulipwood, designed and fitted by our own team.",
+      "heading": "What we make",
+      "inNav": true,
+      "sections": [
+        {
+          "type": "features",
+          "variant": "alternating",
+          "headline": "Made for one house only",
+          "items": [
+            { "title": "Fitted wardrobes", "body": "Measured on site, drawn to scale and built to fit walls that are rarely straight.", "icon": "PenTool" },
+            { "title": "Alcove shelving", "body": "Cupboards below, open shelves above, proportioned to the room and its fireplace.", "icon": "Layers" },
+            { "title": "Kitchen cabinetry", "body": "Cabinets in solid oak or painted tulipwood, built around your layout and the way you cook.", "icon": "Hammer" }
+          ]
+        },
+        {
+          "type": "cta",
+          "headline": "Start with a conversation",
+          "primaryCta": { "label": "Contact us", "href": "/contact" }
+        }
+      ]
+    },
+    {
+      "path": "/about",
+      "label": "About",
+      "title": "About our workshop | Harbour & Pine Joinery",
+      "description": "Harbour & Pine designs, builds and fits bespoke joinery for older homes in Bristol and Bath, from first measure to final fitting by our own team.",
+      "heading": "The workshop",
+      "inNav": true,
+      "sections": [
+        {
+          "type": "story",
+          "variant": "split",
+          "headline": "Designed, built and fitted by us",
+          "paragraphs": [
+            "Every piece starts with a visit and a tape measure. We draw it, build it in our workshop and fit it ourselves, so the person who measured the wall is the person who answers for the result."
+          ],
+          "image": { "alt": "Joiner planing an oak board in the workshop", "brief": "Hands planing a long oak board at the bench, shavings visible, warm workshop light.", "aspect": "landscape" },
+          "imageSide": "right"
+        },
+        {
+          "type": "cta",
+          "headline": "See if we can help",
+          "primaryCta": { "label": "Contact us", "href": "/contact" }
+        }
+      ]
+    },
+    {
+      "path": "/contact",
+      "label": "Contact",
+      "title": "Contact Harbour & Pine Joinery",
+      "description": "Call or email Harbour & Pine Joinery about fitted wardrobes, shelving or kitchens in Bristol and Bath. Workshop hours Monday to Friday, 8:00 to 17:00.",
+      "heading": "Talk to the workshop",
+      "inNav": true,
+      "sections": [
+        { "type": "contact", "headline": "Talk to the workshop", "body": "A photo of the wall and rough measurements help us answer quickly.", "showMap": false, "form": true },
+        { "type": "cta", "headline": "Prefer to call?", "primaryCta": { "label": "Call the workshop", "href": "tel:+441174960123" } }
+      ]
+    },
+    {
+      "path": "/privacy",
+      "label": "Privacy",
+      "title": "Privacy Policy | Harbour & Pine Joinery",
+      "description": "How Harbour & Pine Joinery collects and uses the information you share with us when you get in touch through this website or by phone or email.",
+      "inNav": false,
+      "sections": [
+        { "type": "prose", "headline": "Privacy Policy", "blocks": [ { "heading": "What we collect", "paragraphs": ["We collect only what you choose to send us, such as your name, phone number, email and details of your project."] }, { "heading": "How we use it", "paragraphs": ["We use it to reply to you and to quote for your project. We do not sell your information."] } ] }
+      ]
+    },
+    {
+      "path": "/terms",
+      "label": "Terms",
+      "title": "Terms of Service | Harbour & Pine Joinery",
+      "description": "The terms under which Harbour & Pine Joinery provides this website and the general information on it about our joinery services in Bristol and Bath.",
+      "inNav": false,
+      "sections": [
+        { "type": "prose", "headline": "Terms of Service", "blocks": [ { "heading": "Using this website", "paragraphs": ["This website is operated by Harbour & Pine Joinery. Content is general information and may change without notice."] } ] }
+      ]
+    }
+  ],
+  "footer": {
+    "blurb": "Bespoke fitted joinery for older homes in Bristol and Bath.",
+    "columns": [
+      { "heading": "Workshop", "links": [ { "label": "Services", "href": "/services" }, { "label": "About", "href": "/about" } ] },
+      { "heading": "Get in touch", "links": [ { "label": "Contact", "href": "/contact" } ] }
+    ]
+  },
+  "assetDebt": [
+    { "item": "Photo: finished alcove unit in a period room", "neededFor": "Home hero" },
+    { "item": "Photo: joiner at the bench", "neededFor": "About page" },
+    { "item": "Logo (SVG or high-resolution PNG)", "neededFor": "Header and favicon" }
+  ],
+  "seoKeywords": ["fitted wardrobes Bristol", "alcove shelving Bath", "bespoke joinery Bristol"]
+}

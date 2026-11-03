@@ -1,0 +1,16 @@
+{
+  "businessName": "Harbour & Pine Joinery",
+  "archetype": "local-service",
+  "industry": "Bespoke joinery",
+  "offerings": "Made-to-measure fitted wardrobes, alcove shelving and kitchen cabinetry in solid oak and painted tulipwood, designed, built in our workshop and fitted by us.",
+  "audience": "Homeowners in older houses who want storage that fits awkward walls and looks original to the house.",
+  "locations": "Bristol and Bath",
+  "contact": {
+    "phone": "+44 117 496 0123",
+    "email": "hello@harbourandpine.example",
+    "hours": "Mon–Fri 8:00–17:00"
+  },
+  "pages": ["Home", "Services", "About", "Contact"],
+  "style": { "mood": "quiet, warm, precise", "colors": "deep green, oak, no bright colours" },
+  "language": "en"
+}

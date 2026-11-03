@@ -1,0 +1,29 @@
+@import "tailwindcss";
+@config "../../tailwind.config.ts";
+
+html:root {
+  --brand-primary: #2f4a3a;
+  --brand-primary-contrast: #ffffff;
+  --brand-accent: #b88a4a;
+  --brand-ink: #18241d;
+  --brand-bg: #f8f5ef;
+  --brand-surface: color-mix(in oklab, #2f4a3a 5%, #f8f5ef);
+  --brand-text: #1f2420;
+  --brand-text-muted: color-mix(in srgb, #1f2420 72%, #f8f5ef);
+  --brand-border: color-mix(in oklab, #1f2420 12%, transparent);
+  --brand-radius-sm: 2px;
+  --brand-radius-md: 4px;
+  --brand-radius-lg: 8px;
+  --brand-radius-full: 9999px;
+  --brand-heading-font: var(--font-heading), serif;
+  --brand-body-font: var(--font-body), sans-serif;
+}
+
+@keyframes heroIn {
+  from { opacity: 0.001; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.hero-in { animation: heroIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) both; }
+@media (prefers-reduced-motion: reduce) {
+  .hero-in { animation: none; }
+}

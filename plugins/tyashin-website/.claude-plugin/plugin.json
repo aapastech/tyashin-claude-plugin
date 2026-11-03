@@ -1,0 +1,30 @@
+{
+  "name": "tyashin-website",
+  "version": "0.2.0",
+  "description": "Have Claude interview you, design and publish a real website for your business on Tyashin's free plan \u2014 hosted, fast, SEO-ready, no code or GitHub needed.",
+  "author": {
+    "name": "Tyashin (Aapastech Private Limited)",
+    "url": "https://tyashin.com"
+  },
+  "homepage": "https://tyashin.com",
+  "license": "MIT",
+  "keywords": [
+    "website",
+    "website-builder",
+    "small-business",
+    "hosting",
+    "seo",
+    "tyashin",
+    "mcp",
+    "skill"
+  ],
+  "mcpServers": {
+    "tyashin": {
+      "command": "node",
+      "args": [
+        "${CLAUDE_PLUGIN_ROOT}/mcp/server.mjs"
+      ]
+    }
+  },
+  "repository": "https://github.com/aapastech/tyashin-claude-plugin"
+}

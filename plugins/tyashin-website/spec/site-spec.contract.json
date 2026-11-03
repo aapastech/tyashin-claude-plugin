@@ -1,0 +1,1370 @@
+{
+  "contract": "tyashin.site-spec",
+  "version": 1,
+  "generatedAt": "2026-11-03T04:26:17.546Z",
+  "rules": "You are the design director and copywriter for Tyashin Website Studio. You produce the complete specification for a small business website: design tokens, type pairing, page list, and every section with its variant and finished copy. Engineers do not read your spec — a renderer turns it into a working site directly, so every field must be final, specific and correct.\n\nDESIGN PRINCIPLES (non-negotiable)\n- Distinct, not generic. Decide what this brand should feel like (one sentence: the thesis) and let it drive palette, type and section choices. Two customers in different industries must not get the same look. Never default to purple gradients, Inter-like neutrality, or a hero + three cards + testimonials template unless the brief genuinely calls for it.\n- Luxury means restraint: generous space, one accent used sparingly, a clear type hierarchy, few section types per page (3–6), one primary action repeated once at the end.\n- Colour: choose a palette that belongs to the industry and the mood; give the primary enough contrast for buttons and a dark ink that is a colour, not #000. Respect any colour direction the customer gave.\n- Copy: specific, benefit-led, in the customer's language. Short headlines (≤ 9 words), sub-copy ≤ 30 words, body paragraphs ≤ 70 words. Never \"Welcome to our website\". Never clichés (\"your one-stop shop\", \"we go above and beyond\", \"cutting-edge\").\n\nFACTS RULE (absolute)\n- Use ONLY the facts you are given. No phone numbers, addresses, prices, years, counts, awards, certifications, team names, client names or testimonials that were not provided. If a section needs a fact you do not have, leave the section out, or use a clearly labelled placeholder (\"Founder name (to confirm)\") AND list it in assetDebt. Never write a number you were not given, including in stats.\n- Testimonials and stats sections exist only when the customer supplied the quotes or numbers.\n- Every image is a placeholder brief for a photo the customer will supply; describe what they should shoot, do not describe it as existing.\n\nSTRUCTURE RULES\n- Pages: \"/\" first. Always include \"/contact\" (a contact section, showMap when an address exists), \"/privacy\" and \"/terms\" (prose, inNav=false, written as reasonable generic policies naming the business; nothing invented about data practices beyond what a small business site needs). Add the pages the business needs (about, services or products overview, individual service pages when there are 3+ distinct services, FAQ). Total 4–10 pages. Respect the customer's requested pages.\n- inNav=true for at most 6 pages (not home, not legal). Labels ≤ 2 words.\n- Every page except legal pages ends with a \"cta\" section. Home starts with a hero. Only ONE hero per site (on home); other pages set \"heading\" for their H1 instead.\n- Every href is a path from your pages list or one of the contact links you are told exist. Legal pages link from the footer automatically; do not add them to columns.\n- Footer columns: 2–3 columns of real page links (no duplicates, no legal pages).\n- custom sections: at most 2 in the whole site, only when a kit section cannot express what the brand needs. Write the brief as instructions to a developer: what it shows, how it behaves, what facts from siteConfig it uses, what it must never invent.\n\nOUTPUT: the JSON object only, matching the schema exactly. Titles ≤ 60 characters, descriptions 120–155 characters.",
+  "kitManifest": "SECTION TYPES (each renders as a full-width <section>; you choose the order per page):\n- hero — variant split (copy left, media right) | centered (no media) | editorial (oversized headline, media right of the sub-copy) | stacked (copy above a wide media slot). Fields: eyebrow?, headline, sub?, primaryCta?, secondaryCta?, image?, facts?[] (short proof points).\n- features — variant grid (icon cards, columns 2–4) | list (numbered rows) | alternating (large rows with a media slot). Fields: eyebrow?, headline, intro?, items[{title, body, icon?, href?}], columns?, dark?. Use for services, benefits, process steps, product ranges.\n- story — variant split (media beside copy) | stacked. Fields: eyebrow?, headline, paragraphs[], image?, imageSide?, facts?[{label,value}]. Use for about/approach/history.\n- stats — items[{value,label}], eyebrow?, headline?, dark?. ONLY numbers the customer actually stated.\n- testimonials — items[{quote,name,role?}]. ONLY quotes the customer supplied; otherwise omit the section entirely.\n- faq — items[{q,a}], eyebrow?, headline?. Renders an accessible accordion and FAQPage schema.\n- cta — the closing band: eyebrow?, headline, body?, primaryCta, secondaryCta?, note?. Put one at the end of every page except legal pages.\n- contact — eyebrow?, headline, body?, showMap?. Renders the contact facts from siteConfig (only the ones that exist) and a map when there is an address.\n- gallery — items[image]. Placeholder tiles the customer fills later.\n- prose — long-form: eyebrow?, headline, intro?, blocks[{heading?, paragraphs[], bullets?}]. Use for legal pages and long explanations.\n- custom — name (PascalCase), brief. A bespoke section a developer model builds from your brief using the kit's tokens. Use for the one or two things that make THIS brand's site unlike a template (a signature interactive element, an unusual layout, a product configurator teaser). Max 2 per site; they cost more.\n\nMEDIA: image = {alt, brief, aspect: landscape|portrait|square|wide}. The site ships visible placeholders; the customer supplies photos later. Never describe a photo as if it exists.\nCTAs: {label, href}. href must be a page path from your own pages list, or one of the contact links you are told exist (tel/WhatsApp/email). Never \"#\", never an invented URL.\nICONS (features items): Anchor, Award, Baby, BadgeCheck, Bike, BookOpen, Briefcase, Building2, Calendar, Camera, Car, CheckCircle2, Clock, Coffee, Compass, CreditCard, Crown, Droplets, Dumbbell, Feather, Flame, Flower2, Gem, Gift, Globe, GraduationCap, Hammer, Headphones, Heart, HeartHandshake, Home, Layers, Leaf, Lightbulb, Lock, Mail, MapPin, MessageCircle, Mic, Mountain, Music, Package, Paintbrush, PawPrint, PenTool, Percent, Phone, Plane, Recycle, Rocket, Scale, Scissors, Settings, Shirt, ShieldCheck, ShoppingBag, Smile, Snowflake, Sparkles, Star, Stethoscope, Store, Sun, Target, Timer, TreePine, TrendingUp, Truck, Users, Utensils, Video, Wallet, Waves, Wrench, Zap.\nFONTS: heading ∈ {sora, playfair-display, fraunces, cormorant-garamond, space-grotesk, dm-serif-display, outfit, syne}; body ∈ {figtree, dm-sans, source-sans-3, lora, manrope}. Pair for contrast and for the industry; never default to the first option.\nPALETTE: six hex colours — primary (buttons, links), onPrimary (text on primary, must contrast), accent (highlights, hairlines), background (page), foreground (body text on background), ink (the dark ground used for the footer, CTA bands and dark sections; must contrast with white text). Derived shades are computed for you.\nRADIUS: sharp | soft | round. MOTION: static | subtle | expressive.",
+  "humanizer": {
+    "version": "2026-10-23",
+    "block": "WRITE LIKE A PERSON, NOT A MODEL\nThis copy is published under a real business's name. Readers spot AI-written text in one sentence and stop trusting it.\n\nNever write:\n- Stock openers and filler: \"In today's fast-paced world\", \"When it comes to\", \"Look no further\", \"Take your business to the next level\", \"In conclusion\"\n- Inflating significance: \"a testament to\", \"plays a vital role\", \"pivotal\", \"evolving landscape\", \"stands as a beacon\"\n- Brochure puffery: \"nestled\", \"in the heart of\", \"boasts\", \"breathtaking\", \"world-class\", \"unparalleled\", \"elevate\", \"seamless\", \"one-stop shop\"\n- Words models overuse: \"delve\", \"tapestry\", \"intricate\", \"interplay\", \"realm\", \"embark\", \"meticulous\"\n- Chatbot residue: \"Great question!\", \"Certainly!\", \"I hope this helps\", \"Let me know if you have any other questions\"\n- Upbeat non-endings: \"The future looks bright\", \"the possibilities are endless\"\n- \"Not just X, but Y\" / \"It's not X, it's Y\": \"It's not just a sofa, it's a statement\", \"not only fast but also reliable\"\n- Tacked-on \"-ing\" clauses that claim depth: \", ensuring peace of mind\", \", showcasing our commitment\", \", fostering growth\"\n- Dodging \"is\"/\"has\": \"serves as\", \"functions as\", \"represents a\"\n- Vague authorities: \"Experts agree\", \"Studies show\", \"Industry observers note\"\n- Announcing instead of saying: \"Let's dive in\", \"Here's what you need to know\", \"without further ado\"\n- Padding: \"in order to\", \"due to the fact that\", \"it is important to note that\", \"utilize\"\n- Corporate verbs: \"leverage\", \"empower\", \"revolutionise\", \"transformative\", \"robust\"\n- \"Whether you're X or Y\" audience lists: \"Whether you're a first-time buyer or a seasoned pro\"\n- Em dashes (—). Use a comma, full stop, colon or brackets instead.\n- Ideas forced into threes, synonym cycling, \"from X to Y\" ranges that are not real ranges, a heading followed by a line that restates it, emoji the brand does not already use, bold scattered through sentences.\n\nInstead:\n- Plain verbs: is, has, makes, use. Contractions are fine. Vary sentence length; short sentences are fine.\n- Specific beats impressive: name the actual product, place, number, time or person you were given. If you have no specific fact, write a plain true sentence. Never pad, never invent.\n- Say each thing once. Delete any sentence that would fit a different business unchanged.\n- Headlines say what the business does and for whom. Buttons are plain verbs (\"Book a fitting\", \"See the menu\"), never \"Discover more\" or \"Unlock\". Write as the business talking to one customer.\n\nBefore you finish, reread your copy and ask which lines sound machine-written. Rewrite those.",
+    "rules": [
+      {
+        "id": "stock-phrase",
+        "tier": 1,
+        "label": "Stock openers and filler",
+        "patterns": [
+          {
+            "source": "(?:^|\\W)in today['’]s digital age(?:\\W|$)",
+            "flags": "i"
+          },
+          {
+            "source": "(?:^|\\W)in today['’]s fast-paced(?:\\W|$)",
+            "flags": "i"
+          },
+          {
+            "source": "(?:^|\\W)in today['’]s competitive(?:\\W|$)",
+            "flags": "i"
+          },
+          {
+            "source": "(?:^|\\W)in today['’]s world(?:\\W|$)",
+            "flags": "i"
+          },
+          {
+            "source": "(?:^|\\W)in the digital age(?:\\W|$)",
+            "flags": "i"
+          },
+          {
+            "source": "(?:^|\\W)in the ever-evolving(?:\\W|$)",
+            "flags": "i"
+          },
+          {
+            "source": "(?:^|\\W)in the ever-changing(?:\\W|$)",
+            "flags": "i"
+          },
+          {
+            "source": "(?:^|\\W)in an increasingly(?:\\W|$)",
+            "flags": "i"
+          },
+          {
+            "source": "(?:^|\\W)as businesses increasingly(?:\\W|$)",
+            "flags": "i"
+          },
+          {
+            "source": "(?:^|\\W)as we navigate(?:\\W|$)",
+            "flags": "i"
+          },
+          {
+            "source": "(?:^|\\W)in conclusion(?:\\W|$)",
+            "flags": "i"
+          },
+          {
+            "source": "(?:^|\\W)it is no secret that(?:\\W|$)",
+            "flags": "i"
+          },
+          {
+            "source": "(?:^|\\W)it['’]s no secret that(?:\\W|$)",
+            "flags": "i"
+          },
+          {
+            "source": "(?:^|\\W)look no further(?:\\W|$)",
+            "flags": "i"
+          },
+          {
+            "source": "(?:^|\\W)game-changer(?:\\W|$)",
+            "flags": "i"
+          },
+          {
+            "source": "(?:^|\\W)game changer(?:\\W|$)",
+            "flags": "i"
+          },
+          {
+            "source": "(?:^|\\W)revolutionize(?:\\W|$)",
+            "flags": "i"
+          },
+          {
+            "source": "(?:^|\\W)revolutionizing(?:\\W|$)",
+            "flags": "i"
+          },
+          {
+            "source": "(?:^|\\W)cutting-edge(?:\\W|$)",
+            "flags": "i"
+          },
+          {
+            "source": "(?:^|\\W)seamless experience(?:\\W|$)",
+            "flags": "i"
+          },
+          {
+            "source": "(?:^|\\W)seamlessly integrate(?:\\W|$)",
+            "flags": "i"
+          },
+          {
+            "source": "(?:^|\\W)harness the power(?:\\W|$)",
+            "flags": "i"
+          },
+          {
+            "source": "(?:^|\\W)unlock the power(?:\\W|$)",
+            "flags": "i"
+          },
+          {
+            "source": "(?:^|\\W)unlock the potential(?:\\W|$)",
+            "flags": "i"
+          },
+          {
+            "source": "(?:^|\\W)take your business to the next level(?:\\W|$)",
+            "flags": "i"
+          },
+          {
+            "source": "(?:^|\\W)in this digital era(?:\\W|$)",
+            "flags": "i"
+          },
+          {
+            "source": "(?:^|\\W)the world of(?:\\W|$)",
+            "flags": "i"
+          },
+          {
+            "source": "(?:^|\\W)when it comes to(?:\\W|$)",
+            "flags": "i"
+          },
+          {
+            "source": "(?:^|\\W)a testament to(?:\\W|$)",
+            "flags": "i"
+          },
+          {
+            "source": "(?:^|\\W)navigating the landscape(?:\\W|$)",
+            "flags": "i"
+          },
+          {
+            "source": "(?:^|\\W)delve into(?:\\W|$)",
+            "flags": "i"
+          },
+          {
+            "source": "(?:^|\\W)embark on a journey(?:\\W|$)",
+            "flags": "i"
+          }
+        ]
+      },
+      {
+        "id": "significance-inflation",
+        "tier": 1,
+        "label": "Inflating significance",
+        "patterns": [
+          {
+            "source": "\\btestament to\\b",
+            "flags": "i"
+          },
+          {
+            "source": "\\bplays? an? (?:vital|crucial|pivotal|key|significant|integral) role\\b",
+            "flags": "i"
+          },
+          {
+            "source": "\\bpivotal\\b",
+            "flags": "i"
+          },
+          {
+            "source": "\\bstands? as an? (?:symbol|beacon|testament|reminder)\\b",
+            "flags": "i"
+          },
+          {
+            "source": "\\b(?:evolving|ever-changing|ever-evolving|dynamic) landscape\\b",
+            "flags": "i"
+          },
+          {
+            "source": "\\bunderscor(?:e|es|ed|ing) (?:the|its|our) (?:importance|significance|commitment)\\b",
+            "flags": "i"
+          },
+          {
+            "source": "\\bindelible (?:mark|impression)\\b",
+            "flags": "i"
+          },
+          {
+            "source": "\\bdeeply rooted\\b",
+            "flags": "i"
+          }
+        ]
+      },
+      {
+        "id": "promotional",
+        "tier": 1,
+        "label": "Brochure puffery",
+        "patterns": [
+          {
+            "source": "\\b(?:nestled|breathtaking|unparalleled|world-class|unleash(?:es|ed|ing)?)\\b",
+            "flags": "i"
+          },
+          {
+            "source": "\\bin the (?:very )?heart of\\b",
+            "flags": "i"
+          },
+          {
+            "source": "\\bseamless(?:ly)?\\b",
+            "flags": "i"
+          },
+          {
+            "source": "\\belevat(?:e|es|ing)\\b",
+            "flags": "i"
+          },
+          {
+            "source": "\\belevated (?:experience|living|dining|style|look|design|service)\\b",
+            "flags": "i"
+          },
+          {
+            "source": "\\bone-stop[- ]shop\\b",
+            "flags": "i"
+          },
+          {
+            "source": "\\bboasts?\\b",
+            "flags": "i"
+          },
+          {
+            "source": "\\b(?:a )?symphony of\\b",
+            "flags": "i"
+          },
+          {
+            "source": "\\bunlock(?:s|ing)? (?:the|your|its|new) (?:power|potential|full|secrets?|possibilities)\\b",
+            "flags": "i"
+          },
+          {
+            "source": "\\bgo(?:es)? above and beyond\\b",
+            "flags": "i"
+          }
+        ]
+      },
+      {
+        "id": "ai-vocabulary",
+        "tier": 1,
+        "label": "Words models overuse",
+        "patterns": [
+          {
+            "source": "\\b(?:delv(?:e|es|ed|ing)|tapestry|intricac(?:y|ies)|interplay|realm|embark(?:s|ed|ing)?|meticulous(?:ly)?|garner(?:s|ed|ing)?)\\b",
+            "flags": "i"
+          },
+          {
+            "source": "\\bintricate(?:ly)?\\b",
+            "flags": "i"
+          }
+        ]
+      },
+      {
+        "id": "chatbot-residue",
+        "tier": 1,
+        "label": "Chatbot residue",
+        "patterns": [
+          {
+            "source": "\\bgreat question\\b",
+            "flags": "i"
+          },
+          {
+            "source": "\\b(?:certainly|absolutely|of course)!",
+            "flags": "i"
+          },
+          {
+            "source": "\\bi hope this (?:helps|finds you well)\\b",
+            "flags": "i"
+          },
+          {
+            "source": "\\blet me know if (?:you (?:have|need)|there's|there is)\\b",
+            "flags": "i"
+          },
+          {
+            "source": "\\bas an ai\\b",
+            "flags": "i"
+          },
+          {
+            "source": "\\bbased on (?:the )?(?:available|provided) information\\b",
+            "flags": "i"
+          },
+          {
+            "source": "\\byou(?:'|’)re absolutely right\\b",
+            "flags": "i"
+          },
+          {
+            "source": "\\b(?:up to|as of) my (?:last|knowledge)\\b",
+            "flags": "i"
+          },
+          {
+            "source": "\\bfeel free to (?:reach out|ask|contact)\\b",
+            "flags": "i"
+          }
+        ]
+      },
+      {
+        "id": "generic-conclusion",
+        "tier": 1,
+        "label": "Upbeat non-endings",
+        "patterns": [
+          {
+            "source": "\\bthe future (?:looks|is) bright\\b",
+            "flags": "i"
+          },
+          {
+            "source": "\\bexciting times (?:lie )?ahead\\b",
+            "flags": "i"
+          },
+          {
+            "source": "\\ba (?:major |big )?step in the right direction\\b",
+            "flags": "i"
+          },
+          {
+            "source": "\\bthe possibilities are (?:endless|limitless|infinite)\\b",
+            "flags": "i"
+          },
+          {
+            "source": "\\bjourney (?:toward|towards) excellence\\b",
+            "flags": "i"
+          }
+        ]
+      },
+      {
+        "id": "not-just-but",
+        "tier": 2,
+        "label": "\"Not just X, but Y\" / \"It's not X, it's Y\"",
+        "patterns": [
+          {
+            "source": "\\bnot (?:just|only|merely|simply) (?:about )?[^.!?\\n]{1,60}?[,;—–-]\\s*(?:but|it(?:'|’)s|it is|they(?:'|’)re)\\b",
+            "flags": "i"
+          },
+          {
+            "source": "\\bnot only\\b[^.!?\\n]{1,60}?\\bbut(?: also)?\\b",
+            "flags": "i"
+          },
+          {
+            "source": "\\bit(?:'|’)s not (?:just )?about\\b",
+            "flags": "i"
+          },
+          {
+            "source": "\\bmore than just an?\\b",
+            "flags": "i"
+          }
+        ]
+      },
+      {
+        "id": "ing-tail",
+        "tier": 2,
+        "label": "Tacked-on \"-ing\" clauses that claim depth",
+        "patterns": [
+          {
+            "source": ",\\s*(?:ensuring|highlighting|underscoring|showcasing|fostering|reflecting|symbolizing|symbolising|emphasizing|emphasising|cultivating|contributing to)\\b",
+            "flags": "i"
+          }
+        ]
+      },
+      {
+        "id": "copula-avoidance",
+        "tier": 2,
+        "label": "Dodging \"is\"/\"has\"",
+        "patterns": [
+          {
+            "source": "\\b(?:serves|functions|acts) as (?:a|an|the|your|our)\\b",
+            "flags": "i"
+          }
+        ]
+      },
+      {
+        "id": "weasel-authority",
+        "tier": 2,
+        "label": "Vague authorities",
+        "patterns": [
+          {
+            "source": "\\bexperts (?:agree|say|believe|argue|recommend)\\b",
+            "flags": "i"
+          },
+          {
+            "source": "\\bstudies (?:show|have shown|suggest)\\b",
+            "flags": "i"
+          },
+          {
+            "source": "\\b(?:industry )?observers (?:have )?not(?:ed|e)\\b",
+            "flags": "i"
+          },
+          {
+            "source": "\\bresearch (?:shows|suggests) that\\b",
+            "flags": "i"
+          }
+        ]
+      },
+      {
+        "id": "signposting",
+        "tier": 2,
+        "label": "Announcing instead of saying",
+        "patterns": [
+          {
+            "source": "\\blet(?:'|’)s (?:dive|explore|break (?:it|this) down|take a (?:closer )?look)\\b",
+            "flags": "i"
+          },
+          {
+            "source": "\\bdiv(?:e|ing) (?:deep )?into\\b",
+            "flags": "i"
+          },
+          {
+            "source": "\\bhere(?:'|’)s what you need to know\\b",
+            "flags": "i"
+          },
+          {
+            "source": "\\bwithout further ado\\b",
+            "flags": "i"
+          },
+          {
+            "source": "\\bat its core\\b",
+            "flags": "i"
+          },
+          {
+            "source": "\\bthe real question is\\b",
+            "flags": "i"
+          }
+        ]
+      },
+      {
+        "id": "filler",
+        "tier": 2,
+        "label": "Padding",
+        "patterns": [
+          {
+            "source": "\\bin order to\\b",
+            "flags": "i"
+          },
+          {
+            "source": "\\bdue to the fact that\\b",
+            "flags": "i"
+          },
+          {
+            "source": "\\bit is (?:important|worth|crucial) (?:to note|noting|to remember)\\b",
+            "flags": "i"
+          },
+          {
+            "source": "\\butili[sz](?:e|es|ed|ing)\\b",
+            "flags": "i"
+          },
+          {
+            "source": "\\b(?:additionally|moreover|furthermore),",
+            "flags": "i"
+          }
+        ]
+      },
+      {
+        "id": "corporate-verbs",
+        "tier": 2,
+        "label": "Corporate verbs",
+        "patterns": [
+          {
+            "source": "\\b(?:leverag(?:e|es|ing)|empower(?:s|ing)?|revolutioni[sz](?:e|es|ed|ing)|transformative|robust|synerg(?:y|ies))\\b",
+            "flags": "i"
+          }
+        ]
+      },
+      {
+        "id": "whether-youre",
+        "tier": 2,
+        "label": "\"Whether you're X or Y\" audience lists",
+        "patterns": [
+          {
+            "source": "\\bwhether you(?:'|’)re (?:a |an )?[^.!?\\n]{1,50}? or\\b",
+            "flags": "i"
+          }
+        ]
+      }
+    ]
+  },
+  "schema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "brand": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "shortName": {
+            "type": "string"
+          },
+          "tagline": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "voice": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "name",
+          "shortName",
+          "tagline",
+          "description",
+          "voice"
+        ],
+        "additionalProperties": false
+      },
+      "design": {
+        "type": "object",
+        "properties": {
+          "thesis": {
+            "type": "string"
+          },
+          "palette": {
+            "type": "object",
+            "properties": {
+              "primary": {
+                "type": "string"
+              },
+              "onPrimary": {
+                "type": "string"
+              },
+              "accent": {
+                "type": "string"
+              },
+              "background": {
+                "type": "string"
+              },
+              "foreground": {
+                "type": "string"
+              },
+              "ink": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "primary",
+              "onPrimary",
+              "accent",
+              "background",
+              "foreground",
+              "ink"
+            ],
+            "additionalProperties": false
+          },
+          "headingFont": {
+            "type": "string",
+            "enum": [
+              "sora",
+              "playfair-display",
+              "fraunces",
+              "cormorant-garamond",
+              "space-grotesk",
+              "dm-serif-display",
+              "outfit",
+              "syne"
+            ]
+          },
+          "bodyFont": {
+            "type": "string",
+            "enum": [
+              "figtree",
+              "dm-sans",
+              "source-sans-3",
+              "lora",
+              "manrope"
+            ]
+          },
+          "radius": {
+            "type": "string",
+            "enum": [
+              "sharp",
+              "soft",
+              "round"
+            ]
+          },
+          "motion": {
+            "type": "string",
+            "enum": [
+              "static",
+              "subtle",
+              "expressive"
+            ]
+          }
+        },
+        "required": [
+          "thesis",
+          "palette",
+          "headingFont",
+          "bodyFont",
+          "radius",
+          "motion"
+        ],
+        "additionalProperties": false
+      },
+      "pages": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "path": {
+              "type": "string"
+            },
+            "label": {
+              "type": "string"
+            },
+            "title": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "heading": {
+              "type": "string"
+            },
+            "inNav": {
+              "type": "boolean"
+            },
+            "sections": {
+              "type": "array",
+              "items": {
+                "oneOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "const": "hero"
+                      },
+                      "variant": {
+                        "type": "string",
+                        "enum": [
+                          "split",
+                          "centered",
+                          "editorial",
+                          "stacked"
+                        ]
+                      },
+                      "eyebrow": {
+                        "type": "string"
+                      },
+                      "headline": {
+                        "type": "string"
+                      },
+                      "sub": {
+                        "type": "string"
+                      },
+                      "primaryCta": {
+                        "type": "object",
+                        "properties": {
+                          "label": {
+                            "type": "string"
+                          },
+                          "href": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "label",
+                          "href"
+                        ],
+                        "additionalProperties": false
+                      },
+                      "secondaryCta": {
+                        "type": "object",
+                        "properties": {
+                          "label": {
+                            "type": "string"
+                          },
+                          "href": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "label",
+                          "href"
+                        ],
+                        "additionalProperties": false
+                      },
+                      "image": {
+                        "type": "object",
+                        "properties": {
+                          "alt": {
+                            "type": "string"
+                          },
+                          "brief": {
+                            "type": "string"
+                          },
+                          "aspect": {
+                            "type": "string",
+                            "enum": [
+                              "landscape",
+                              "portrait",
+                              "square",
+                              "wide"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "alt",
+                          "brief",
+                          "aspect"
+                        ],
+                        "additionalProperties": false
+                      },
+                      "facts": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "required": [
+                      "type",
+                      "variant",
+                      "headline"
+                    ],
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "const": "features"
+                      },
+                      "variant": {
+                        "type": "string",
+                        "enum": [
+                          "grid",
+                          "list",
+                          "alternating"
+                        ]
+                      },
+                      "eyebrow": {
+                        "type": "string"
+                      },
+                      "headline": {
+                        "type": "string"
+                      },
+                      "intro": {
+                        "type": "string"
+                      },
+                      "items": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "title": {
+                              "type": "string"
+                            },
+                            "body": {
+                              "type": "string"
+                            },
+                            "icon": {
+                              "type": "string",
+                              "enum": [
+                                "Anchor",
+                                "Award",
+                                "Baby",
+                                "BadgeCheck",
+                                "Bike",
+                                "BookOpen",
+                                "Briefcase",
+                                "Building2",
+                                "Calendar",
+                                "Camera",
+                                "Car",
+                                "CheckCircle2",
+                                "Clock",
+                                "Coffee",
+                                "Compass",
+                                "CreditCard",
+                                "Crown",
+                                "Droplets",
+                                "Dumbbell",
+                                "Feather",
+                                "Flame",
+                                "Flower2",
+                                "Gem",
+                                "Gift",
+                                "Globe",
+                                "GraduationCap",
+                                "Hammer",
+                                "Headphones",
+                                "Heart",
+                                "HeartHandshake",
+                                "Home",
+                                "Layers",
+                                "Leaf",
+                                "Lightbulb",
+                                "Lock",
+                                "Mail",
+                                "MapPin",
+                                "MessageCircle",
+                                "Mic",
+                                "Mountain",
+                                "Music",
+                                "Package",
+                                "Paintbrush",
+                                "PawPrint",
+                                "PenTool",
+                                "Percent",
+                                "Phone",
+                                "Plane",
+                                "Recycle",
+                                "Rocket",
+                                "Scale",
+                                "Scissors",
+                                "Settings",
+                                "Shirt",
+                                "ShieldCheck",
+                                "ShoppingBag",
+                                "Smile",
+                                "Snowflake",
+                                "Sparkles",
+                                "Star",
+                                "Stethoscope",
+                                "Store",
+                                "Sun",
+                                "Target",
+                                "Timer",
+                                "TreePine",
+                                "TrendingUp",
+                                "Truck",
+                                "Users",
+                                "Utensils",
+                                "Video",
+                                "Wallet",
+                                "Waves",
+                                "Wrench",
+                                "Zap"
+                              ]
+                            },
+                            "href": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "title",
+                            "body"
+                          ],
+                          "additionalProperties": false
+                        }
+                      },
+                      "columns": {
+                        "type": "number"
+                      },
+                      "dark": {
+                        "type": "boolean"
+                      }
+                    },
+                    "required": [
+                      "type",
+                      "variant",
+                      "headline",
+                      "items"
+                    ],
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "const": "story"
+                      },
+                      "variant": {
+                        "type": "string",
+                        "enum": [
+                          "split",
+                          "stacked"
+                        ]
+                      },
+                      "eyebrow": {
+                        "type": "string"
+                      },
+                      "headline": {
+                        "type": "string"
+                      },
+                      "paragraphs": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "image": {
+                        "type": "object",
+                        "properties": {
+                          "alt": {
+                            "type": "string"
+                          },
+                          "brief": {
+                            "type": "string"
+                          },
+                          "aspect": {
+                            "type": "string",
+                            "enum": [
+                              "landscape",
+                              "portrait",
+                              "square",
+                              "wide"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "alt",
+                          "brief",
+                          "aspect"
+                        ],
+                        "additionalProperties": false
+                      },
+                      "imageSide": {
+                        "type": "string",
+                        "enum": [
+                          "left",
+                          "right"
+                        ]
+                      },
+                      "facts": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "label": {
+                              "type": "string"
+                            },
+                            "value": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "label",
+                            "value"
+                          ],
+                          "additionalProperties": false
+                        }
+                      }
+                    },
+                    "required": [
+                      "type",
+                      "variant",
+                      "headline",
+                      "paragraphs"
+                    ],
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "const": "stats"
+                      },
+                      "eyebrow": {
+                        "type": "string"
+                      },
+                      "headline": {
+                        "type": "string"
+                      },
+                      "items": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "value": {
+                              "type": "string"
+                            },
+                            "label": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "value",
+                            "label"
+                          ],
+                          "additionalProperties": false
+                        }
+                      },
+                      "dark": {
+                        "type": "boolean"
+                      }
+                    },
+                    "required": [
+                      "type",
+                      "items"
+                    ],
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "const": "testimonials"
+                      },
+                      "eyebrow": {
+                        "type": "string"
+                      },
+                      "headline": {
+                        "type": "string"
+                      },
+                      "items": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "quote": {
+                              "type": "string"
+                            },
+                            "name": {
+                              "type": "string"
+                            },
+                            "role": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "quote",
+                            "name"
+                          ],
+                          "additionalProperties": false
+                        }
+                      }
+                    },
+                    "required": [
+                      "type",
+                      "items"
+                    ],
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "const": "faq"
+                      },
+                      "eyebrow": {
+                        "type": "string"
+                      },
+                      "headline": {
+                        "type": "string"
+                      },
+                      "items": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "q": {
+                              "type": "string"
+                            },
+                            "a": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "q",
+                            "a"
+                          ],
+                          "additionalProperties": false
+                        }
+                      }
+                    },
+                    "required": [
+                      "type",
+                      "items"
+                    ],
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "const": "cta"
+                      },
+                      "eyebrow": {
+                        "type": "string"
+                      },
+                      "headline": {
+                        "type": "string"
+                      },
+                      "body": {
+                        "type": "string"
+                      },
+                      "primaryCta": {
+                        "type": "object",
+                        "properties": {
+                          "label": {
+                            "type": "string"
+                          },
+                          "href": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "label",
+                          "href"
+                        ],
+                        "additionalProperties": false
+                      },
+                      "secondaryCta": {
+                        "type": "object",
+                        "properties": {
+                          "label": {
+                            "type": "string"
+                          },
+                          "href": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "label",
+                          "href"
+                        ],
+                        "additionalProperties": false
+                      },
+                      "note": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "type",
+                      "headline",
+                      "primaryCta"
+                    ],
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "const": "contact"
+                      },
+                      "eyebrow": {
+                        "type": "string"
+                      },
+                      "headline": {
+                        "type": "string"
+                      },
+                      "body": {
+                        "type": "string"
+                      },
+                      "showMap": {
+                        "type": "boolean"
+                      },
+                      "form": {
+                        "description": "true adds an enquiry form (name, email, phone, message) that sends leads to the owner's Tyashin inbox. Omit or false for contact details only. When true, the privacy page should say that messages sent through the form are stored by the business to reply to the enquiry.",
+                        "type": "boolean"
+                      }
+                    },
+                    "required": [
+                      "type",
+                      "headline"
+                    ],
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "const": "gallery"
+                      },
+                      "eyebrow": {
+                        "type": "string"
+                      },
+                      "headline": {
+                        "type": "string"
+                      },
+                      "items": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "alt": {
+                              "type": "string"
+                            },
+                            "brief": {
+                              "type": "string"
+                            },
+                            "aspect": {
+                              "type": "string",
+                              "enum": [
+                                "landscape",
+                                "portrait",
+                                "square",
+                                "wide"
+                              ]
+                            }
+                          },
+                          "required": [
+                            "alt",
+                            "brief",
+                            "aspect"
+                          ],
+                          "additionalProperties": false
+                        }
+                      }
+                    },
+                    "required": [
+                      "type",
+                      "items"
+                    ],
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "const": "prose"
+                      },
+                      "eyebrow": {
+                        "type": "string"
+                      },
+                      "headline": {
+                        "type": "string"
+                      },
+                      "intro": {
+                        "type": "string"
+                      },
+                      "blocks": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "heading": {
+                              "type": "string"
+                            },
+                            "paragraphs": {
+                              "type": "array",
+                              "items": {
+                                "type": "string"
+                              }
+                            },
+                            "bullets": {
+                              "type": "array",
+                              "items": {
+                                "type": "string"
+                              }
+                            }
+                          },
+                          "required": [
+                            "paragraphs"
+                          ],
+                          "additionalProperties": false
+                        }
+                      }
+                    },
+                    "required": [
+                      "type",
+                      "headline",
+                      "blocks"
+                    ],
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "const": "custom"
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "brief": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "type",
+                      "name",
+                      "brief"
+                    ],
+                    "additionalProperties": false
+                  }
+                ]
+              }
+            }
+          },
+          "required": [
+            "path",
+            "label",
+            "title",
+            "description",
+            "inNav",
+            "sections"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "footer": {
+        "type": "object",
+        "properties": {
+          "blurb": {
+            "type": "string"
+          },
+          "columns": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "heading": {
+                  "type": "string"
+                },
+                "links": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "label": {
+                        "type": "string"
+                      },
+                      "href": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "label",
+                      "href"
+                    ],
+                    "additionalProperties": false
+                  }
+                }
+              },
+              "required": [
+                "heading",
+                "links"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        "required": [
+          "blurb",
+          "columns"
+        ],
+        "additionalProperties": false
+      },
+      "assetDebt": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "item": {
+              "type": "string"
+            },
+            "neededFor": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "item",
+            "neededFor"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "seoKeywords": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    },
+    "required": [
+      "brand",
+      "design",
+      "pages",
+      "footer",
+      "assetDebt"
+    ],
+    "additionalProperties": false
+  }
+}
